@@ -1,11 +1,16 @@
 import React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { Button, Card, Paragraph } from 'react-native-paper';
+import { Button, Card, Paragraph, Appbar } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function Quizlist() {
+export default function Quizlist({navigation}) {
   return (
     <>
+        <Appbar.Header style={{backgroundColor:"#7d0505"}}>
+          <Appbar.Action icon="menu" onPress={()=>navigation.toggleDrawer()} />
+          <Appbar.Content title="Quiz App">
+          </Appbar.Content>
+        </Appbar.Header>
         <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
         <ScrollView>
         <Card style={styles.cardstyle}>
@@ -14,7 +19,7 @@ export default function Quizlist() {
             <Paragraph>In Informatics, dummy data is benign information that does not contain any useful data, but serves to reserve space where real data is nominally present.</Paragraph>
           </Card.Content>
           <Card.Actions>
-            <Button mode="contained" style={{width:'100%'}}>Go to Quiz</Button>
+            <Button mode="contained" style={{width:'100%'}} onPress={() => navigation.navigate('Attempt Quiz')}>Go to Quiz</Button>
           </Card.Actions>
         </Card>
         <Card style={styles.cardstyle}>

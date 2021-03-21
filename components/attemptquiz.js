@@ -1,12 +1,17 @@
 import React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { Button, Card, Paragraph, RadioButton } from 'react-native-paper';
+import { Button, Card, Paragraph, RadioButton, Appbar } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function Attemptquiz() {
+export default function Attemptquiz({navigation}) {
   const [checked, setChecked] = React.useState('first');
   return (
     <>
+        <Appbar.Header style={{backgroundColor:"#7d0505"}}>
+          <Appbar.Action icon="menu" onPress={()=>navigation.toggleDrawer()} />
+          <Appbar.Content title="Quiz App">
+          </Appbar.Content>
+        </Appbar.Header>
         <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
         <ScrollView>
         <Card style={styles.cardstyle}>
@@ -42,7 +47,7 @@ export default function Attemptquiz() {
             </RadioButton.Group>
           </Card.Content>
           <Card.Actions>
-            <Button mode="contained" style={{width:'100%'}}>Finish Quiz</Button>
+            <Button mode="contained" style={{width:'100%'}} onPress={() => navigation.navigate('Result')}>Finish Quiz</Button>
           </Card.Actions>
         </Card>
         </ScrollView>
