@@ -16,41 +16,45 @@ The main motive of this project is to make it easy for students to practice thei
 ## Home Page:
 
 <div>
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img1.jpeg" />
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img2.jpeg" />
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img1.jpeg" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img2.jpeg" />
 </div>
 
-## Student Login Page:
+## Student Login/Sign-Up Page:
 
 <div>
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img3.jpeg" />
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img4.jpeg" />
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img3.jpeg" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img4.jpeg" />
 </div>
 
-## Teacher Login Page:
+## Teacher Login/Sign-Up Page:
 
 <div>
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img5.jpeg" />
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img6.jpeg" />
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img5.jpeg" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img6.jpeg" />
 </div>
 
 ## Quiz List Page:
 
 <div>
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img7.jpeg" />
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img7.jpeg" />
 </div>
 
 ## Attempt Quiz Page:
 
 <div>
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img8.jpeg" />
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img9.jpeg" />
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img8.jpeg" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img9.jpeg" />
 </div>
 
 ## Result Page:
 
 <div>
-  <img src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img10.jpeg" />
+  <img height="600" width="300" src="https://github.com/pankajkumarbij/Exam-Quiz-Application/blob/master/README%20IMAGES/img10.jpeg" />
 </div>
 
 ### Thanks
