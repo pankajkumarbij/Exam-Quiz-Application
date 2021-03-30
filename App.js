@@ -1,6 +1,6 @@
 import React from 'react';
 import Drawers from './components/drawer';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import { firebaseConfig } from './config';
 
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();

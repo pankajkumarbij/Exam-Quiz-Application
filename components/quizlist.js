@@ -1,54 +1,48 @@
-import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { Button, Card, Paragraph, Appbar } from 'react-native-paper';
+import React,{ useEffect, useState } from 'react';
+import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { Button, Card, Paragraph } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
+import firebase from 'firebase/app';
+import "firebase/database";
+import "firebase/auth";
 
 export default function Quizlist({navigation}) {
+
+  const [data, setData]=useState([]);
+
+  useEffect(()=>{
+    const quizeslist=firebase.database().ref('quiz');
+    quizeslist.once('value',datasnap=>{
+      var datas=[];
+      datasnap.forEach((data)=>{
+        datas.push(data.val());
+      })
+      setData(datas);
+    })
+  })
+
   return (
     <>
-        <Appbar.Header style={{backgroundColor:"#7d0505"}}>
-          <Appbar.Action icon="menu" onPress={()=>navigation.toggleDrawer()} />
-          <Appbar.Content title="Quiz App">
-          </Appbar.Content>
-        </Appbar.Header>
         <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
         <ScrollView>
-        <Card style={styles.cardstyle}>
-          <Card.Title title="Quiz Name" subtitle="Author name"/>
-          <Card.Content>
-            <Paragraph>In Informatics, dummy data is benign information that does not contain any useful data, but serves to reserve space where real data is nominally present.</Paragraph>
-          </Card.Content>
-          <Card.Actions>
-            <Button mode="contained" style={{width:'100%'}} onPress={() => navigation.navigate('Attempt Quiz')}>Go to Quiz</Button>
-          </Card.Actions>
-        </Card>
-        <Card style={styles.cardstyle}>
-          <Card.Title title="Quiz Name" subtitle="Author name"/>
-          <Card.Content>
-            <Paragraph>In Informatics, dummy data is benign information that does not contain any useful data, but serves to reserve space where real data is nominally present.</Paragraph>
-          </Card.Content>
-          <Card.Actions>
-            <Button mode="contained" style={{width:'100%'}}>Go to Quiz</Button>
-          </Card.Actions>
-        </Card>
-        <Card style={styles.cardstyle}>
-          <Card.Title title="Quiz Name" subtitle="Author name"/>
-          <Card.Content>
-            <Paragraph>In Informatics, dummy data is benign information that does not contain any useful data, but serves to reserve space where real data is nominally present.</Paragraph>
-          </Card.Content>
-          <Card.Actions>
-            <Button mode="contained" style={{width:'100%'}}>Go to Quiz</Button>
-          </Card.Actions>
-        </Card>
-        <Card style={styles.cardstyle}>
-          <Card.Title title="Quiz Name" subtitle="Author name"/>
-          <Card.Content>
-            <Paragraph>In Informatics, dummy data is benign information that does not contain any useful data, but serves to reserve space where real data is nominally present.</Paragraph>
-          </Card.Content>
-          <Card.Actions>
-            <Button mode="contained" style={{width:'100%'}}>Go to Quiz</Button>
-          </Card.Actions>
-        </Card>
+        {data.length>0 &&
+          Object.keys(data).map(function(keyName, keyIndex) {
+            return(
+              <Card style={styles.cardstyle}>
+                <Card.Title title={data[keyName].quizname} subtitle={data[keyName].subject}/>
+                <Card.Content>
+                  <Paragraph>{data[keyName].description}</Paragraph>
+                </Card.Content>
+                <Card.Actions>
+                  <Button mode="contained" style={{width:'100%'}} onPress={() => navigation.navigate('Attempt Quiz',{quizdata: data[keyIndex]})}>Go to Quiz</Button>
+                </Card.Actions>
+              </Card>  
+            )
+          })
+        }
+        {data.length==0 &&
+           <ActivityIndicator size="large" color="#00ff00" />
+        }
         </ScrollView>
         </LinearGradient>
     </>
