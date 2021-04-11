@@ -3,16 +3,32 @@ import { StyleSheet, ScrollView } from 'react-native';
 import { Card, Paragraph } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function QuizResult({navigation}) {
+export default function QuizResult({navigation,route}) {
+  const {marks, quizdata}=route.params;
+  const percent=100*marks/quizdata.ques.length;
+  var status="";
+  if(percent<30){
+    status="Very Poor";
+  }
+  else if(percent<50){
+    status="Poor";
+  }
+  else if(percent<80){
+    status="Good";
+  }
+  else{
+    status="Very Good";
+  }
   return (
     <>
-        <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
+        <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
         <ScrollView>
         <Card style={styles.cardstyle}>
-          <Card.Title title="Quiz Name Result" subtitle="Author name"/>
+          <Card.Title title={quizdata.quizname} subtitle={quizdata.subject}/>
           <Card.Content>
-            <Paragraph>Result: 200/300</Paragraph>
-            <Paragraph>Status: Passed/Failed</Paragraph>
+            <Paragraph>Result: {marks}</Paragraph>
+            <Paragraph>percent: {percent}%</Paragraph>
+            <Paragraph>Status: {status}</Paragraph>
           </Card.Content>
         </Card>
         </ScrollView>

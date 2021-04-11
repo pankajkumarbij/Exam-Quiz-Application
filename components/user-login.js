@@ -34,12 +34,12 @@ export default function UserLogin({navigation}) {
 
     return (
         <>
-            <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
+            <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
                 <View style={{width:350, height:400, justifyContent: 'center'}}>
                     <Headline style={{color:"lightgreen", marginBottom:"3%"}}>User Login</Headline>
-                    <TextInput label="Email" value={email} onChangeText={email => setEmail(email)} style={{marginTop:'3%'}} />
+                    <TextInput label="Email" value={email} onChangeText={email => setEmail(email)} style={{marginTop:'3%'}}/>
                     <TextInput label="Password" secureTextEntry={true} value={password} onChangeText={password => setPassword(password)} style={{marginTop:'3%', marginBottom:'3%'}} />
-                    <Button mode="contained" onPress={()=> loginitems()} >Login</Button>
+                    <Button mode="contained" onPress={()=> loginitems()} color="#FF0099" >Login</Button>
                 </View>
             </LinearGradient>
         </>

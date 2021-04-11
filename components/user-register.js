@@ -49,7 +49,7 @@ export default function UserRegister({navigation}) {
     
     return (
         <>
-            <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
+            <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
                 <View style={{width:350, height:400, justifyContent: 'center'}}>
                     <Headline style={{color:"lightgreen", marginBottom:"3%"}}>User Register</Headline>
                     <Card>
@@ -63,7 +63,7 @@ export default function UserRegister({navigation}) {
                     <TextInput label="Mobile No" value={mn} onChangeText={mn => setMn(mn)} style={{marginTop:'3%'}} />
                     <TextInput label="Password" secureTextEntry={true} value={password} onChangeText={password => setPassword(password)} style={{marginTop:'3%'}} />
                     <TextInput label="Confirm Password" secureTextEntry={true} value={cpassword} onChangeText={cpassword => setCpassword(cpassword)} style={{marginTop:'3%', marginBottom:'3%'}} />
-                    <Button mode="contained" onPress={()=> saveitems()} >Register</Button>
+                    <Button mode="contained" onPress={()=> saveitems()} color="#FF0099" >Register</Button>
                 </View>
             </LinearGradient>
         </>

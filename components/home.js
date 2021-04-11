@@ -8,10 +8,10 @@ export default function Home({navigation}) {
 
   return (
     <>
-        <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
+        <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
           <Image style={styles.homeimg} source={homeimg1} />
           <Text style={styles.texts}>Practice and test your skills by attempting many different types of quizzes according to your subject.</Text>
-          <Button icon="arrow-right" mode="contained" style={{margin:20}} onPress={() => navigation.navigate('Quiz List')}>Attempt a Quiz</Button>
+          <Button icon="arrow-right" mode="contained" style={{margin:20}} onPress={() => navigation.navigate('Quiz List')} color="#FF0099" >Attempt a Quiz</Button>
         </LinearGradient>
     </>
   );

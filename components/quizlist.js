@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator, View } from 'react-native';
 import { Button, Card, Paragraph } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase/app';
@@ -23,7 +23,8 @@ export default function Quizlist({navigation}) {
 
   return (
     <>
-        <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
+        <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
+        <View style={{height:640,}}>
         <ScrollView>
         {data.length>0 &&
           Object.keys(data).map(function(keyName, keyIndex) {
@@ -34,7 +35,7 @@ export default function Quizlist({navigation}) {
                   <Paragraph>{data[keyName].description}</Paragraph>
                 </Card.Content>
                 <Card.Actions>
-                  <Button mode="contained" style={{width:'100%'}} onPress={() => navigation.navigate('Attempt Quiz',{quizdata: data[keyIndex]})}>Go to Quiz</Button>
+                  <Button mode="contained" style={{width:'100%'}} onPress={() => navigation.navigate('Attempt Quiz',{quizdata: data[keyIndex]})} color="#FF0099">Go to Quiz</Button>
                 </Card.Actions>
               </Card>  
             )
@@ -44,6 +45,7 @@ export default function Quizlist({navigation}) {
            <ActivityIndicator size="large" color="#00ff00" />
         }
         </ScrollView>
+        </View>
         </LinearGradient>
     </>
   );

@@ -4,8 +4,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import firebase from 'firebase/app';
 import 'firebase/database';
 import { MainStackNavigator } from './navbar';
-import { Button } from 'react-native-paper';
-import { View, StyleSheet } from 'react-native';
+import { Avatar, Button } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,13 +32,14 @@ export default function Drawers({navigation}) {
   function CustomDrawerContent1({navigation}) {
     return (
       <>
-      <View style={styles.container}>
+      <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
+        <Avatar.Icon size={70} icon="account" style={{alignSelf:'center',marginTop:30}} />
+        <Button icon="email-outline" style={{width:280}} color="yellow">{email}</Button>
         <Button icon="home-outline" onPress={() => {navigation.navigate('Quiz App')}} color="#fff">Home</Button>
         <Button icon="format-list-bulleted-square" onPress={() => {navigation.navigate('Quiz List')}} color="#fff">Quiz List</Button>
         <Button icon="playlist-plus" onPress={() => {navigation.navigate('Create Quiz')}} color="#fff">Create Quiz</Button>
-        <Button icon="email-outline" style={{width:280}} color="#fff">{email}</Button>
-        <Button icon="logout" onPress={() => logout()} color="#fff">Logout</Button>
-      </View>
+        <Button icon="logout" onPress={() => logout()} color="lightgreen">Logout</Button>
+      </LinearGradient>
       </>
     );
   }
@@ -45,12 +47,12 @@ export default function Drawers({navigation}) {
   function CustomDrawerContent2({navigation}) {
     return (
       <>
-      <View style={styles.container}>
+      <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
         <Button icon="home-outline" onPress={() => {navigation.navigate('Quiz App')}} color="#fff">Home</Button>
         <Button icon="format-list-bulleted-square" onPress={() => {navigation.navigate('Quiz List')}} color="#fff">Quiz List</Button>
         <Button icon="login-variant" onPress={() => {navigation.navigate('User Login')}} color="#fff">Login</Button>
         <Button icon="account-plus-outline" onPress={() => {navigation.navigate('User Register')}} color="#fff">Sign Up</Button>
-      </View>
+      </LinearGradient>
       </>
     );
   }
@@ -78,7 +80,7 @@ export default function Drawers({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#7d0505',
+    //backgroundColor: '#7d0505',
     alignItems: 'flex-start',
     padding:'2%',
   },

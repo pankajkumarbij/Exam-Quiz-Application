@@ -65,7 +65,6 @@ export default function CreateQuiz({navigation}) {
     }
 
     function saveitems(){
-        console.log(inputs);
         const quizes=firebase.database().ref("quiz");
         quizes.push().set({
             teacherid:loginuser.uid,
@@ -80,7 +79,7 @@ export default function CreateQuiz({navigation}) {
 
     return (
         <>
-            <LinearGradient colors={['#8E60D9', '#E31748']} style={styles.container}>
+            <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
             <Headline style={{color:"lightgreen", marginBottom:"3%"}}>Create Quiz</Headline>
             <ScrollView>
                 <View style={{width:350, height:400}}>
@@ -91,11 +90,11 @@ export default function CreateQuiz({navigation}) {
                     {inputs.map((input, key)=>(
                         <View>
                             <TextInput label="question" multiline value={input.value}  onChangeText={(text)=>inputHandler(text,key,'','','','','')} style={{marginTop:'3%'}} />
-                            <TextInput label="option 1" value={input.option1}  onChangeText={(option1)=>inputHandler('',key,option1,'','','','')} />
-                            <TextInput label="option 2" value={input.option2}  onChangeText={(option2)=>inputHandler('',key,'',option2,'','','')} />
-                            <TextInput label="option 3" value={input.option3}  onChangeText={(option3)=>inputHandler('',key,'','',option3,'','')} />
-                            <TextInput label="option 4" value={input.option4}  onChangeText={(option4)=>inputHandler('',key,'','','',option4,'')} />
-                            <TextInput label="answer" value={input.ans}  onChangeText={(ans)=>inputHandler('',key,'','','','',ans)} />
+                            <TextInput label="option 1" value={input.option1} onChangeText={(option1)=>inputHandler('',key,option1,'','','','')} />
+                            <TextInput label="option 2" value={input.option2} onChangeText={(option2)=>inputHandler('',key,'',option2,'','','')} />
+                            <TextInput label="option 3" value={input.option3} onChangeText={(option3)=>inputHandler('',key,'','',option3,'','')} />
+                            <TextInput label="option 4" value={input.option4} onChangeText={(option4)=>inputHandler('',key,'','','',option4,'')} />
+                            <TextInput label="answer" value={input.ans} onChangeText={(ans)=>inputHandler('',key,'','','','',ans)} />
                             <IconButton icon="minus-circle" onPress={()=> deleteHandler(key)} />
                         </View>
                     ))}
@@ -103,9 +102,9 @@ export default function CreateQuiz({navigation}) {
                       <Text style={{color:'white',fontWeight:'bold',marginTop:12}}>Add a Question</Text>
                       <IconButton icon="plus-circle" onPress={()=> addHandler()}  />
                     </View>
-                    <Button mode="contained" onPress={()=> saveitems()} style={{marginTop:'3%', marginBottom:'3%'}} >Create Quiz</Button>
                 </View>
             </ScrollView>
+            <Button mode="contained" onPress={()=> saveitems()} style={{width: 350, marginTop:'3%', marginBottom:'3%'}} color="#FF0099" >Create Quiz</Button>
             </LinearGradient>
         </>
     );
