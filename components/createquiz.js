@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
-import { Headline, TextInput, Button, IconButton } from 'react-native-paper';
+import { TextInput, Button, IconButton } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase/app';
 import "firebase/database";
@@ -80,9 +80,9 @@ export default function CreateQuiz({navigation}) {
     return (
         <>
             <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
-            <Headline style={{color:"lightgreen", marginBottom:"3%"}}>Create Quiz</Headline>
+            <Text style={{color:"lightgreen", marginBottom:"3%", alignSelf:'center', fontSize:30, fontWeight:'700'}}>Create Quiz</Text>
             <ScrollView>
-                <View style={{width:350, height:400}}>
+                <View style={{width:390, height:'100%'}}>
                     <TextInput label="Quiz Name" value={name} onChangeText={name => setName(name)} style={{marginTop:'3%'}} />
                     <TextInput label="Subject" value={subject} onChangeText={subject => setSubject(subject)} style={{marginTop:'3%'}} />
                     <TextInput label="Duration" value={time} onChangeText={time => setTime(time)} style={{marginTop:'3%'}} />
@@ -95,16 +95,15 @@ export default function CreateQuiz({navigation}) {
                             <TextInput label="option 3" value={input.option3} onChangeText={(option3)=>inputHandler('',key,'','',option3,'','')} />
                             <TextInput label="option 4" value={input.option4} onChangeText={(option4)=>inputHandler('',key,'','','',option4,'')} />
                             <TextInput label="answer" value={input.ans} onChangeText={(ans)=>inputHandler('',key,'','','','',ans)} />
-                            <IconButton icon="minus-circle" onPress={()=> deleteHandler(key)} />
+                            <IconButton icon="minus-circle" size={30} color="red" onPress={()=> deleteHandler(key)} />
                         </View>
                     ))}
                     <View style={styles.row}>
-                      <Text style={{color:'white',fontWeight:'bold',marginTop:12}}>Add a Question</Text>
-                      <IconButton icon="plus-circle" onPress={()=> addHandler()}  />
+                      <IconButton icon="plus-circle" size={30} color="#73d216" onPress={()=> addHandler()}  />
                     </View>
                 </View>
             </ScrollView>
-            <Button mode="contained" onPress={()=> saveitems()} style={{width: 350, marginTop:'3%', marginBottom:'3%'}} color="#FF0099" >Create Quiz</Button>
+            <Button mode="contained" onPress={()=> saveitems()} style={{width: 390, marginTop:'3%', marginBottom:'3%'}} color="#FF0099" >Create Quiz</Button>
             </LinearGradient>
         </>
     );
@@ -118,6 +117,7 @@ const styles = StyleSheet.create({
     },
     row:{
         flexDirection: 'row',
-        width: 100,
+        justifyContent: 'flex-end',
+        top: -60,
     },
   });

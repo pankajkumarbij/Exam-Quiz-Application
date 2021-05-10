@@ -1,11 +1,13 @@
 import React,{ useState, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Headline, TextInput, Button } from 'react-native-paper';
+import { StyleSheet, View, Image, Text } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase/app';
 import "firebase/database";
 
 export default function UserLogin({navigation}) {
+	const login = require('../assets/login.png');
+
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("");
     
@@ -35,8 +37,9 @@ export default function UserLogin({navigation}) {
     return (
         <>
             <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
-                <View style={{width:350, height:400, justifyContent: 'center'}}>
-                    <Headline style={{color:"lightgreen", marginBottom:"3%"}}>User Login</Headline>
+            	<View style={{width:380, height:'80%'}}>
+                	<Image style={styles.loginimg} source={login} />
+                    <Text style={{color:"lightgreen", marginBottom:"3%", alignSelf:'center', fontSize:30, fontWeight:'700'}}>User Login</Text>
                     <TextInput label="Email" value={email} onChangeText={email => setEmail(email)} style={{marginTop:'3%'}}/>
                     <TextInput label="Password" secureTextEntry={true} value={password} onChangeText={password => setPassword(password)} style={{marginTop:'3%', marginBottom:'3%'}} />
                     <Button mode="contained" onPress={()=> loginitems()} color="#FF0099" >Login</Button>
@@ -52,4 +55,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    loginimg: {
+		width: 250,
+		height: 250,
+		alignSelf: 'center'
+  	},
   });

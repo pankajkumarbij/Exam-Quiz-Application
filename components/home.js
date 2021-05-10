@@ -11,7 +11,7 @@ export default function Home({navigation}) {
         <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
           <Image style={styles.homeimg} source={homeimg1} />
           <Text style={styles.texts}>Practice and test your skills by attempting many different types of quizzes according to your subject.</Text>
-          <Button icon="arrow-right" mode="contained" style={{margin:20}} onPress={() => navigation.navigate('Quiz List')} color="#FF0099" >Attempt a Quiz</Button>
+          <Button icon="arrow-right" mode="contained" style={{margin:'7%'}} onPress={() => navigation.navigate('Quiz List')} color="#FF0099" >Attempt a Quiz</Button>
         </LinearGradient>
     </>
   );
@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
   },
   homeimg: {
     width: '100%',
-    height: 370,
+    height: 400,
   },
   texts: {
     fontSize: 20,
-    padding: 30,
+    padding: '5%',
     fontFamily: 'serif',
     fontWeight: 'bold',
     color: 'white'

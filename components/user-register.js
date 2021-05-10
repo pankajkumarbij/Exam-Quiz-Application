@@ -1,11 +1,12 @@
 import React,{ useState, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Headline, TextInput, Button, RadioButton, Card } from 'react-native-paper';
+import { StyleSheet, View, Image, Text } from 'react-native';
+import { TextInput, Button, RadioButton, Card, IconButton } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
 export default function UserRegister({navigation}) {
+	const register = require('../assets/register.png');
 
     useEffect(()=>{
         firebase.auth().onAuthStateChanged((user) => {
@@ -19,10 +20,8 @@ export default function UserRegister({navigation}) {
   
     const [name, setName]=useState("");
     const [email, setEmail]=useState("");
-    const [mn, setMn]=useState("");
     const [password, setPassword]=useState("");
     const [cpassword, setCpassword]=useState("");
-    const [checked, setChecked] = useState("student");
 
     function saveitems(){
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -31,8 +30,6 @@ export default function UserRegister({navigation}) {
             users.push().set({
                 name:name,
                 email:email,
-                mobile:mn,
-                usertype:checked,
                 password:password,
                 cpassword:cpassword,
                 time:Date.now()
@@ -50,17 +47,11 @@ export default function UserRegister({navigation}) {
     return (
         <>
             <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
-                <View style={{width:350, height:400, justifyContent: 'center'}}>
-                    <Headline style={{color:"lightgreen", marginBottom:"3%"}}>User Register</Headline>
-                    <Card>
-                        <RadioButton.Group>
-                            <RadioButton.Item label="Student" value="student" status={ checked === 'student' ? 'checked' : 'unchecked' } onPress={() => setChecked('student')} />
-                            <RadioButton.Item label="Teacher" value="teacher" status={ checked === 'teacher' ? 'checked' : 'unchecked' } onPress={() => setChecked('teacher')} />
-                        </RadioButton.Group>
-                    </Card>
+                <View style={{width:380, height:'100%'}}>
+                	<Image style={styles.registerimg} source={register} />
+                    <Text style={{color:"lightgreen", marginBottom:"3%", alignSelf:'center', fontSize:30, fontWeight:'700'}}>User Register</Text>
                     <TextInput label="Name" value={name} onChangeText={name => setName(name)} style={{marginTop:'3%'}} />
                     <TextInput label="Email" value={email} onChangeText={email => setEmail(email)} style={{marginTop:'3%'}} />
-                    <TextInput label="Mobile No" value={mn} onChangeText={mn => setMn(mn)} style={{marginTop:'3%'}} />
                     <TextInput label="Password" secureTextEntry={true} value={password} onChangeText={password => setPassword(password)} style={{marginTop:'3%'}} />
                     <TextInput label="Confirm Password" secureTextEntry={true} value={cpassword} onChangeText={cpassword => setCpassword(cpassword)} style={{marginTop:'3%', marginBottom:'3%'}} />
                     <Button mode="contained" onPress={()=> saveitems()} color="#FF0099" >Register</Button>
@@ -76,4 +67,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    registerimg: {
+		width: 250,
+		height: 300,
+		alignSelf: 'center'
+  	},
   });

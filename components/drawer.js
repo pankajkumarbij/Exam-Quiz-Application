@@ -33,7 +33,7 @@ export default function Drawers({navigation}) {
     return (
       <>
       <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
-        <Avatar.Icon size={70} icon="account" style={{alignSelf:'center',marginTop:30}} />
+        <Avatar.Icon size={70} icon="account" style={{alignSelf:'center',marginTop:'15%'}} />
         <Button icon="email-outline" style={{width:280}} color="yellow">{email}</Button>
         <Button icon="home-outline" onPress={() => {navigation.navigate('Quiz App')}} color="#fff">Home</Button>
         <Button icon="format-list-bulleted-square" onPress={() => {navigation.navigate('Quiz List')}} color="#fff">Quiz List</Button>
@@ -48,7 +48,7 @@ export default function Drawers({navigation}) {
     return (
       <>
       <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
-        <Button icon="home-outline" onPress={() => {navigation.navigate('Quiz App')}} color="#fff">Home</Button>
+        <Button icon="home-outline" style={{marginTop:"15%"}} onPress={() => {navigation.navigate('Quiz App')}} color="#fff">Home</Button>
         <Button icon="format-list-bulleted-square" onPress={() => {navigation.navigate('Quiz List')}} color="#fff">Quiz List</Button>
         <Button icon="login-variant" onPress={() => {navigation.navigate('User Login')}} color="#fff">Login</Button>
         <Button icon="account-plus-outline" onPress={() => {navigation.navigate('User Register')}} color="#fff">Sign Up</Button>
@@ -59,14 +59,13 @@ export default function Drawers({navigation}) {
 
   return (
     <>
-    {email && 
+    {email? 
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home" drawerContent={(props) => <CustomDrawerContent1 {...props} />}>
           <Drawer.Screen name="Home" component={MainStackNavigator} />
         </Drawer.Navigator>
       </NavigationContainer>
-    }
-    {!email && 
+    :
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home" drawerContent={(props) => <CustomDrawerContent2 {...props} />}>
           <Drawer.Screen name="Home" component={MainStackNavigator} />

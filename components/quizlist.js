@@ -24,7 +24,7 @@ export default function Quizlist({navigation}) {
   return (
     <>
         <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
-        <View style={{height:640,}}>
+        <View style={{height:'98%',}}>
         <ScrollView>
         {data.length>0 &&
           Object.keys(data).map(function(keyName, keyIndex) {
@@ -55,9 +55,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 15,
+    padding: '3%',
   },
   cardstyle: {
-    marginTop: '5%',
+    marginTop: '4%',
   },
 });

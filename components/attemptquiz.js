@@ -30,7 +30,7 @@ export default function Attemptquiz({navigation, route}) {
   return (
     <>
         <LinearGradient colors={['#FF0099', '#4A00E0']} style={styles.container}>
-        <View style={{height:640,}}>
+        <View style={{height:'100%',}}>
         <Card style={styles.cardstyle}>
           <Card.Title title={quizdata.quizname} subtitle={quizdata.subject}/>
         </Card>
@@ -50,12 +50,8 @@ export default function Attemptquiz({navigation, route}) {
             )
           })
           }
-          {quizdata.ques.length==0 &&
-            <ActivityIndicator size="large" color="#FF0099" />
-          }
         </ScrollView>
-          <br/>
-          <Button mode="contained" style={{width:'100%'}} onPress={() => navigation.navigate('Result',{marks: marks, quizdata:quizdata})} color="#FF0099" >Finish Quiz</Button>
+          <Button mode="contained" style={{width:'100%',marginTop:'4%'}} onPress={() => navigation.navigate('Result',{marks: marks, quizdata:quizdata})} color="#FF0099" >Finish Quiz</Button>
       </View>
       </LinearGradient>
     </>
@@ -69,11 +65,11 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   cardstyle: {
-    marginBottom: '5%',
-    padding: '5%'
+    marginBottom: '4%',
+    padding: '4%'
   },
   question: {
     marginTop: '1%',
-    padding: '5%'
+    padding: '4%'
   },
 });
