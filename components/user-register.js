@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
-import { TextInput, Button, RadioButton, Card, IconButton } from 'react-native-paper';
+import { TextInput, Button, RadioButton, Card, IconButton, Dialog, Paragraph } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -22,26 +22,27 @@ export default function UserRegister({navigation}) {
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("");
     const [cpassword, setCpassword]=useState("");
+    const [error,setError]=useState('');
+   	const [visible, setVisible] = React.useState(false);
+   	const hideDialog = () => setVisible(false);
 
     function saveitems(){
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(() => {
-            const users=firebase.database().ref("users");
-            users.push().set({
-                name:name,
-                email:email,
-                password:password,
-                cpassword:cpassword,
-                time:Date.now()
-            });
-        })
-        .then(() => {
-            navigation.navigate("User Login");
-        })
-        .catch((error) => {
-            console.log(error.code);
-            console.log(error.message);name
-        });
+    	if(password===cpassword){
+		    firebase.auth().createUserWithEmailAndPassword(email, password)
+		    .then(() => {
+		        navigation.navigate("User Login");
+		    })
+		    .catch((error) => {
+		        console.log(error.code);
+		        console.log(error.message);
+				setError(error.message);
+				setVisible(true) ;
+		    });
+	   }
+	   else{
+	   		setError("password and confirm password not match");
+			setVisible(true) ;
+	   }
     }
     
     return (
@@ -55,6 +56,50 @@ export default function UserRegister({navigation}) {
                     <TextInput label="Password" secureTextEntry={true} value={password} onChangeText={password => setPassword(password)} style={{marginTop:'3%'}} />
                     <TextInput label="Confirm Password" secureTextEntry={true} value={cpassword} onChangeText={cpassword => setCpassword(cpassword)} style={{marginTop:'3%', marginBottom:'3%'}} />
                     <Button mode="contained" onPress={()=> saveitems()} color="#FF0099" >Register</Button>
+                    {error==="The email address is badly formatted." &&
+						<Dialog visible={visible} onDismiss={hideDialog}>
+						   <Dialog.Title>Alert</Dialog.Title>
+						   <Dialog.Content>
+							 <Paragraph>The email address is badly formatted.</Paragraph>
+						   </Dialog.Content>
+						   <Dialog.Actions>
+							 <Button onPress={hideDialog}>OK</Button>
+						   </Dialog.Actions>
+						 </Dialog>
+					  }
+					  {error==="Password should be at least 6 characters" &&
+							<Dialog visible={visible} onDismiss={hideDialog}>
+								<Dialog.Title>Alert</Dialog.Title>
+							   <Dialog.Content>
+								 <Paragraph>Password should be at least 6 characters.</Paragraph>
+							   </Dialog.Content>
+							   <Dialog.Actions>
+								 <Button onPress={hideDialog}>OK</Button>
+							   </Dialog.Actions>
+						 	</Dialog>
+					  }
+					  {error==="password and confirm password not match" &&
+							<Dialog visible={visible} onDismiss={hideDialog}>
+								<Dialog.Title>Alert</Dialog.Title>
+							   <Dialog.Content>
+								 <Paragraph>password and confirm password not match</Paragraph>
+							   </Dialog.Content>
+							   <Dialog.Actions>
+								 <Button onPress={hideDialog}>OK</Button>
+							   </Dialog.Actions>
+						 	</Dialog>
+					  }
+					  {error==="The email address is already in use by another account." && 
+						   	<Dialog visible={visible} onDismiss={hideDialog}>
+							   <Dialog.Title>Alert</Dialog.Title>
+							   <Dialog.Content>
+								 <Paragraph>The email address is already in use by another account.</Paragraph>
+							   </Dialog.Content>
+							   <Dialog.Actions>
+								 <Button onPress={hideDialog}>OK</Button>
+							   </Dialog.Actions>
+						  	</Dialog>
+					  }
                 </View>
             </LinearGradient>
         </>

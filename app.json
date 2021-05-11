@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Quiz-Application",
-    "slug": "Quiz-Application",
+    "name": "Exam-Quiz-Application",
+    "slug": "exam-quiz-application",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

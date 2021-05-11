@@ -37,6 +37,7 @@ export default function Drawers({navigation}) {
         <Button icon="email-outline" style={{width:280}} color="yellow">{email}</Button>
         <Button icon="home-outline" onPress={() => {navigation.navigate('Quiz App')}} color="#fff">Home</Button>
         <Button icon="format-list-bulleted-square" onPress={() => {navigation.navigate('Quiz List')}} color="#fff">Quiz List</Button>
+        <Button icon="format-list-bulleted-square" onPress={() => {navigation.navigate('My Quizes')}} color="#fff">My Quizes</Button>
         <Button icon="playlist-plus" onPress={() => {navigation.navigate('Create Quiz')}} color="#fff">Create Quiz</Button>
         <Button icon="logout" onPress={() => logout()} color="lightgreen">Logout</Button>
       </LinearGradient>

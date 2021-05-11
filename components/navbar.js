@@ -5,6 +5,7 @@ import Attemptquiz from "./attemptquiz";
 import QuizResult from "./result";
 import { Button } from "react-native-paper";
 import Quizlist from "./quizlist";
+import MyQuiz from "./myquiz";
 import UserLogin from "./user-login";
 import UserRegister from "./user-register";
 import CreateQuiz from "./createquiz";
@@ -29,6 +30,11 @@ const MainStackNavigator = ({navigation}) => {
         ),
         }}/>
         <Stack.Screen name="Quiz List" component={Quizlist} options={{
+        headerLeft:()=>(
+          <Button icon="menu" onPress={()=>navigation.toggleDrawer()} color="#fff" />
+        ),
+        }}/>
+        <Stack.Screen name="My Quizes" component={MyQuiz} options={{
         headerLeft:()=>(
           <Button icon="menu" onPress={()=>navigation.toggleDrawer()} color="#fff" />
         ),

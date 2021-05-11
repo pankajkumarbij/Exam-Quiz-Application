@@ -9,7 +9,6 @@ export default function CreateQuiz({navigation}) {
     const [loginuser, setLoginuser]=useState("");
     const [name, setName]=useState("");
     const [subject, setSubject]=useState("");
-    const [time, setTime]=useState("");
     const [description, setDescription]=useState("");
     const [inputs, setInputs] = useState([{key: '', value: '', option1: '', option2: '', option3: '', option4: '', ans: ''}]);
     
@@ -67,10 +66,9 @@ export default function CreateQuiz({navigation}) {
     function saveitems(){
         const quizes=firebase.database().ref("quiz");
         quizes.push().set({
-            teacherid:loginuser.uid,
+            creater:loginuser.email,
             quizname:name,
             subject:subject,
-            duration:time,
             description:description,
             ques:inputs,
             time:Date.now()
@@ -85,7 +83,6 @@ export default function CreateQuiz({navigation}) {
                 <View style={{width:390, height:'100%'}}>
                     <TextInput label="Quiz Name" value={name} onChangeText={name => setName(name)} style={{marginTop:'3%'}} />
                     <TextInput label="Subject" value={subject} onChangeText={subject => setSubject(subject)} style={{marginTop:'3%'}} />
-                    <TextInput label="Duration" value={time} onChangeText={time => setTime(time)} style={{marginTop:'3%'}} />
                     <TextInput label="Description" multiline value={description} onChangeText={description => setDescription(description)} style={{marginTop:'3%'}} />
                     {inputs.map((input, key)=>(
                         <View>
